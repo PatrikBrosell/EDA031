@@ -4,12 +4,26 @@
 
 using namespace std;
 
-Word::Word(const string& w, const vector<string>& t) {}
+Word::Word(const string& w, const vector<string>& t): word(w), v(t) {}
 
 string Word::get_word() const {
-	return string();
+	return word;
 }
 
 unsigned int Word::get_matches(const vector<string>& t) const {
-	return 0;
+	unsigned int matches = 0;
+	unsigned int v_count = 0;
+	unsigned int t_count = 0;
+	while(v_count < v.size() && t_count < t.size()) {
+		if(v[v_count] == t[t_count]) {
+			matches++;
+			v_count++;
+			t_count++;
+		} else if(v[v_count] > t[t_count]) {
+			t_count++;
+		} else {
+			v_count++;
+		}
+	}
+	return matches;
 }
