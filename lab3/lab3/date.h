@@ -1,7 +1,12 @@
 #ifndef DATE_H
 #define DATE_H
 
+#include <string>
+#include <iostream>
+
 class Date {
+	friend std::istream& operator>>(std::istream& is, Date& dt);
+	friend std::ostream& operator<<(std::ostream& os, Date& dt);
 public:
 	Date();                    // today's date
 	Date(int y, int m, int d); // yyyy-mm-dd
